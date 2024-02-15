@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  border: 2px solid black;
+  margin: 2rem;
+  padding: 3rem;
+  padding-top: 0.5rem;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.button {
+  width: 5rem;
+  font-size: large;
+  padding: 0.5rem;
+  align-self: center;
+  margin-top: 2rem;
+}
