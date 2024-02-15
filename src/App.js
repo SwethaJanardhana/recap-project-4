@@ -1,24 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Form from "./components/Form/Form";
+import List from "./components/List/List";
 import { uid } from "uid";
+import useLocalStorageState from "use-local-storage-state";
 
 function App() {
-  const [activities, setActivities] = useState([]);
+  const [filteredActivities, setFilteredActivities] = useState([]);
+  const [activities, setActivities] = useLocalStorageState("activities", {
+    defaultValue: [],
+  });
 
-  function handleAddActivity(newActivity) {
+  const isGoodWeather = true;
+
+  /*  function handleAddActivity(newActivity) {
     setActivities([{ id: uid(), ...newActivity }, ...activities]);
+
     console.log("New Entry ", newActivity);
-  }
+  } */
+  useEffect(() => {
+    setFilteredActivities(
+      activities.filter(
+        (activity) => activity.isForGoodWeather === isGoodWeather
+      )
+    );
+  }, [isGoodWeather]);
 
   return (
     <>
-      <Form onAddActivity={handleAddActivity} />
-      <ul>
-        {activities.map((activity) => (
-          <li key={activity.id}>{activity.name}</li>
-        ))}
-      </ul>
+      <List activities={filteredActivities} />
+      {/* <Form onAddActivity={handleAddActivity} /> */}
     </>
   );
 }

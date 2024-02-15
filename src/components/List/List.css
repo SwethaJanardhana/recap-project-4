@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 0.5rem;
+
+  max-width: 480px;
+}
+.listItem {
+  padding: 0.5rem;
+  background-color: rgb(180, 175, 175);
+}

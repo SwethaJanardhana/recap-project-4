@@ -5,6 +5,8 @@ export default function Form({ onAddActivity }) {
     event.preventDefault();
     const form = new FormData(event.target);
     const data = Object.fromEntries(form);
+    console.log(data.name);
+    console.log(data.isForGoodWeather);
     console.log(data);
     onAddActivity(data);
     event.target.reset();
@@ -20,13 +22,14 @@ export default function Form({ onAddActivity }) {
           <input id="name" type="text" name="name"></input>
         </span>
         <span>
-          <label htmlFor="good">Good-weather activity:</label>
-          <input type="checkbox" id="good" name="good"></input>
+          <label htmlFor="isForGoodWeather">Good-weather activity:</label>
+          <input
+            type="checkbox"
+            id="isForGoodWeather"
+            name="isForGoodWeather"
+          ></input>
         </span>
-        <span>
-          <label htmlFor="bad">Bad-weather activity:</label>
-          <input type="checkbox" id="bad" name="bad"></input>
-        </span>
+
         <button className="button">Submit</button>
       </div>
     </form>
