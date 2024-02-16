@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Form from "./components/Form/Form";
 import List from "./components/List/List";
+import Display from "./components/Display/Display";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 
@@ -61,18 +62,17 @@ function App() {
   }, [isGoodWeather, activities, setActivities]);
 
   return (
-    <>
-      <h1>
-        {condition}
-        {temperature}
-      </h1>
+    <main
+      className={isGoodWeather ? "layout weather-good" : "layout weather-bad"}
+    >
+      <Display condition={condition} temperature={temperature} />
       <List
         activities={filteredActivities}
         isGoodWeather={isGoodWeather}
         onDeleteActivity={handleDeleteActivity}
       />
       <Form onAddActivity={handleAddActivity} />
-    </>
+    </main>
   );
 }
 
