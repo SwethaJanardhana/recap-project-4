@@ -9,6 +9,7 @@ function App() {
   const [activities, setActivities] = useLocalStorageState("activities", {
     defaultValue: [],
   });
+
   const [filteredActivities, setFilteredActivities] = useState([...activities]);
 
   const URL = "https://example-apis.vercel.app/api/weather";
@@ -33,6 +34,15 @@ function App() {
     setActivities([{ id: uid(), ...newActivity }, ...activities]);
   }
 
+  function handleDeleteActivity(id) {
+    const updatedActivitiesList = activities.filter(
+      (activity) => activity.id !== id
+    );
+    localStorage.removeItem(activities);
+    localStorage.setItem("activities", JSON.stringify(updatedActivitiesList));
+    setActivities(updatedActivitiesList);
+  }
+
   useEffect(() => {
     fetchWeather();
     setFilteredActivities(
@@ -40,7 +50,7 @@ function App() {
         (activity) => activity.isForGoodWeather === isGoodWeather
       )
     );
-  }, [isGoodWeather, activities]);
+  }, [isGoodWeather, activities, setActivities]);
 
   return (
     <>
@@ -48,7 +58,11 @@ function App() {
         {condition}
         {temperature}
       </h1>
-      <List activities={filteredActivities} isGoodWeather={isGoodWeather} />
+      <List
+        activities={filteredActivities}
+        isGoodWeather={isGoodWeather}
+        onDeleteActivity={handleDeleteActivity}
+      />
       <Form onAddActivity={handleAddActivity} />
     </>
   );
