@@ -11,13 +11,30 @@ function App() {
   });
   const [filteredActivities, setFilteredActivities] = useState([...activities]);
 
-  const isGoodWeather = false;
+  const URL = "https://example-apis.vercel.app/api/weather";
+
+  const [isGoodWeather, setIsGoodWeather] = useState(false);
+  const [condition, setCondition] = useState("");
+  const [temperature, setTemperature] = useState(0);
+
+  async function fetchWeather() {
+    try {
+      const response = await fetch(URL);
+      const data = await response.json();
+      setIsGoodWeather(data.isGoodWeather);
+      setCondition(data.condition);
+      setTemperature(data.temperature);
+    } catch (error) {
+      console.log("Error :", error);
+    }
+  }
 
   function handleAddActivity(newActivity) {
     setActivities([{ id: uid(), ...newActivity }, ...activities]);
   }
 
   useEffect(() => {
+    fetchWeather();
     setFilteredActivities(
       activities.filter(
         (activity) => activity.isForGoodWeather === isGoodWeather
@@ -27,6 +44,10 @@ function App() {
 
   return (
     <>
+      <h1>
+        {condition}
+        {temperature}
+      </h1>
       <List activities={filteredActivities} isGoodWeather={isGoodWeather} />
       <Form onAddActivity={handleAddActivity} />
     </>
