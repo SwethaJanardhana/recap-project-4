@@ -45,11 +45,19 @@ function App() {
 
   useEffect(() => {
     fetchWeather();
+
     setFilteredActivities(
       activities.filter(
         (activity) => activity.isForGoodWeather === isGoodWeather
       )
     );
+    const interval = setInterval(() => {
+      fetchWeather();
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, [isGoodWeather, activities, setActivities]);
 
   return (
