@@ -1,6 +1,6 @@
 import "../List/List.css";
 
-export default function List({ activities, isGoodWeather }) {
+export default function List({ activities, isGoodWeather, onDeleteActivity }) {
   return (
     <section>
       <h2>
@@ -11,7 +11,8 @@ export default function List({ activities, isGoodWeather }) {
       <ul className="list">
         {activities.map((activity) => (
           <li className="listItem" key={activity.id}>
-            {activity.name}
+            {activity.name}{" "}
+            <button onClick={() => onDeleteActivity(activity.id)}>x</button>
           </li>
         ))}
       </ul>
