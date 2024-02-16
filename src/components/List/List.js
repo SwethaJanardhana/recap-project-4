@@ -2,8 +2,8 @@ import "../List/List.css";
 
 export default function List({ activities, isGoodWeather, onDeleteActivity }) {
   return (
-    <section>
-      <h2>
+    <section className="list-section">
+      <h2 className="weather-message">
         {isGoodWeather
           ? "The weather is awesome! Go outside and:"
           : "Bad weather outside! Here's what you can do now:"}
@@ -12,7 +12,12 @@ export default function List({ activities, isGoodWeather, onDeleteActivity }) {
         {activities.map((activity) => (
           <li className="listItem" key={activity.id}>
             {activity.name}{" "}
-            <button onClick={() => onDeleteActivity(activity.id)}>x</button>
+            <button
+              className="delete-button"
+              onClick={() => onDeleteActivity(activity.id)}
+            >
+              x
+            </button>
           </li>
         ))}
       </ul>

@@ -1,12 +1,31 @@
+.weather-message {
+  margin-left: 2.2rem;
+}
 .list {
   display: flex;
   flex-direction: column;
+  justify-content: left;
+  align-items: left;
   list-style: none;
   gap: 0.5rem;
-
-  max-width: 480px;
 }
 .listItem {
-  padding: 0.5rem;
-  background-color: rgb(180, 175, 175);
+  padding: 0.7rem;
+  background-color: cornflowerblue;
+  width: 60%;
+  border-radius: 0.6rem;
+  color: white;
+  font-size: larger;
+}
+.delete-button {
+  border-radius: 50%;
+  border-style: none;
+  float: right;
+  cursor: pointer;
+
+  font-weight: bold;
+}
+.delete-button:hover {
+  background-color: rgb(252, 68, 68);
+  color: white;
 }
