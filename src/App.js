@@ -6,30 +6,29 @@ import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 
 function App() {
-  const [filteredActivities, setFilteredActivities] = useState([]);
   const [activities, setActivities] = useLocalStorageState("activities", {
     defaultValue: [],
   });
+  const [filteredActivities, setFilteredActivities] = useState([...activities]);
 
-  const isGoodWeather = true;
+  const isGoodWeather = false;
 
-  /*  function handleAddActivity(newActivity) {
+  function handleAddActivity(newActivity) {
     setActivities([{ id: uid(), ...newActivity }, ...activities]);
+  }
 
-    console.log("New Entry ", newActivity);
-  } */
   useEffect(() => {
     setFilteredActivities(
       activities.filter(
         (activity) => activity.isForGoodWeather === isGoodWeather
       )
     );
-  }, [isGoodWeather]);
+  }, [isGoodWeather, activities]);
 
   return (
     <>
-      <List activities={filteredActivities} />
-      {/* <Form onAddActivity={handleAddActivity} /> */}
+      <List activities={filteredActivities} isGoodWeather={isGoodWeather} />
+      <Form onAddActivity={handleAddActivity} />
     </>
   );
 }
