@@ -11,13 +11,15 @@ function App() {
     defaultValue: [],
   });
 
-  const [filteredActivities, setFilteredActivities] = useState([...activities]);
-
   const URL = "https://example-apis.vercel.app/api/weather";
 
   const [isGoodWeather, setIsGoodWeather] = useState(false);
   const [condition, setCondition] = useState("");
   const [temperature, setTemperature] = useState(0);
+
+  const filteredActivities = activities.filter(
+    (activity) => activity.isForGoodWeather === isGoodWeather
+  );
 
   async function fetchWeather() {
     try {
@@ -47,11 +49,6 @@ function App() {
   useEffect(() => {
     fetchWeather();
 
-    setFilteredActivities(
-      activities.filter(
-        (activity) => activity.isForGoodWeather === isGoodWeather
-      )
-    );
     const interval = setInterval(() => {
       fetchWeather();
     }, 5000);
@@ -59,7 +56,7 @@ function App() {
     return () => {
       clearInterval(interval);
     };
-  }, [isGoodWeather, activities, setActivities]);
+  }, []);
 
   return (
     <main
