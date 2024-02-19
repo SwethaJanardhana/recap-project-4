@@ -11,11 +11,15 @@
 }
 .listItem {
   padding: 0.7rem;
-  background-color: cornflowerblue;
+  background-color: aqua;
   width: 90%;
   border-radius: 0.6rem;
-  color: white;
+  color: darkblue;
   font-size: larger;
+}
+.listItem:hover {
+  background-color: darkblue;
+  color: aqua;
 }
 .delete-button {
   border-radius: 50%;

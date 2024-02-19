@@ -5,12 +5,13 @@
   border-radius: 1rem;
   margin: 1rem;
   padding: 2rem;
+  width: 90vw;
 }
 .weather-good {
-  background-image: linear-gradient(aqua, rgb(252, 252, 131));
+  background-image: linear-gradient(aqua, yellow);
   color: darkblue;
 }
 .weather-bad {
-  background-image: linear-gradient(cornflowerblue, rgb(64, 8, 107));
-  color: white;
+  background-image: linear-gradient(aqua, blueviolet);
+  color: darkblue;
 }
