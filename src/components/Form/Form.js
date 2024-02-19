@@ -14,7 +14,7 @@ export default function Form({ onAddActivity }) {
 
   return (
     <form className="container" onSubmit={handleForm}>
-      <h2>Add new Activity:</h2>
+      <h2 className="form-title">Add new Activity:</h2>
       <section className="input-section">
         <span className="input-container">
           <label htmlFor="name">Name: </label>
@@ -27,7 +27,7 @@ export default function Form({ onAddActivity }) {
             maxLength="30"
           ></input>
         </span>
-        <span className="input-container">
+        <span className="input-container-checkbox">
           <label htmlFor="isForGoodWeather">Good-weather activity:</label>
           <input
             className="input-checkbox"

@@ -4,10 +4,11 @@ export default function List({ activities, isGoodWeather, onDeleteActivity }) {
   return (
     <section className="list-section">
       <h2>
-        {isGoodWeather
-          ? "The weather is awesome! Go outside and:"
-          : "Bad weather outside! Here's what you can do now:"}
+        {isGoodWeather ? "The weather is awesome!" : "Bad weather outside!"}
       </h2>
+      <h3>
+        {isGoodWeather ? "Go outside and:" : "Here's what you can do now:"}
+      </h3>
       <ul className="list">
         {activities.map((activity) => (
           <li className="listItem" key={activity.id}>
