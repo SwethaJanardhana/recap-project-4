@@ -1,3 +1,18 @@
+.list-section {
+  margin-bottom: 0;
+  width: 100%;
+}
+h2 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 0;
+}
+h3 {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-top: 0.4rem;
+}
+
 .list {
   display: flex;
   flex-direction: column;
@@ -6,13 +21,15 @@
   list-style: none;
   gap: 0.5rem;
   padding-left: 0;
-  height: 200px;
+
+  height: 20vh;
   overflow-y: scroll;
+  margin-bottom: 1rem;
 }
 .listItem {
   padding: 0.7rem;
   background-color: aqua;
-  width: 90%;
+  width: 100%;
   border-radius: 0.6rem;
   color: darkblue;
   font-size: larger;
