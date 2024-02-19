@@ -14,7 +14,7 @@ export default function Form({ onAddActivity }) {
 
   return (
     <form className="container" onSubmit={handleForm}>
-      <h3>Add new Activity:</h3>
+      <h2>Add new Activity:</h2>
       <section className="input-section">
         <span className="input-container">
           <label htmlFor="name">Name: </label>
@@ -36,9 +36,8 @@ export default function Form({ onAddActivity }) {
             name="isForGoodWeather"
           ></input>
         </span>
+        <button className="button">Submit</button>
       </section>
-
-      <button className="button">Submit</button>
     </form>
   );
 }
