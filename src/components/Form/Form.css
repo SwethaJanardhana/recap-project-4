@@ -44,7 +44,27 @@
   width: 25vw;
 }
 .input-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  border-style: none;
-  padding: 1rem;
+  border: 2px solid #ccc;
+}
+
+.input-checkbox::after {
+  opacity: 1;
+  content: "";
+  display: none;
+  transform: rotate(45deg);
+  height: 25px;
+  margin-left: 10px;
+  margin-top: -10px;
+  padding-left: 10px;
+  border-bottom: 7px solid #78b13f;
+  border-right: 7px solid #78b13f;
+}
+
+.input-checkbox:checked::after {
+  display: inline-block;
 }

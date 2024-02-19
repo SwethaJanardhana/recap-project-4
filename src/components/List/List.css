@@ -1,6 +1,3 @@
-.weather-message {
-  margin-left: 2.2rem;
-}
 .list {
   display: flex;
   flex-direction: column;
@@ -8,11 +5,14 @@
   align-items: left;
   list-style: none;
   gap: 0.5rem;
+  padding-left: 0;
+  height: 200px;
+  overflow-y: scroll;
 }
 .listItem {
   padding: 0.7rem;
   background-color: cornflowerblue;
-  width: 60%;
+  width: 90%;
   border-radius: 0.6rem;
   color: white;
   font-size: larger;

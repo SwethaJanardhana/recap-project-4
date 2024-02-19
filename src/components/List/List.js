@@ -3,7 +3,7 @@ import "../List/List.css";
 export default function List({ activities, isGoodWeather, onDeleteActivity }) {
   return (
     <section className="list-section">
-      <h2 className="weather-message">
+      <h2>
         {isGoodWeather
           ? "The weather is awesome! Go outside and:"
           : "Bad weather outside! Here's what you can do now:"}
