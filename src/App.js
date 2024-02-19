@@ -11,23 +11,27 @@ function App() {
     defaultValue: [],
   });
 
+  const [weatherData, setWeatherData] = useState({
+    isGoodWeather: false,
+    condition: "",
+    temperature: 0,
+  });
+
   const URL = "https://example-apis.vercel.app/api/weather";
 
-  const [isGoodWeather, setIsGoodWeather] = useState(false);
-  const [condition, setCondition] = useState("");
-  const [temperature, setTemperature] = useState(0);
-
   const filteredActivities = activities.filter(
-    (activity) => activity.isForGoodWeather === isGoodWeather
+    (activity) => activity.isForGoodWeather === weatherData.isGoodWeather
   );
 
   async function fetchWeather() {
     try {
       const response = await fetch(URL);
       const data = await response.json();
-      setIsGoodWeather(data.isGoodWeather);
-      setCondition(data.condition);
-      setTemperature(data.temperature);
+      setWeatherData({
+        isGoodWeather: data.isGoodWeather,
+        condition: data.condition,
+        temperature: data.temperature,
+      });
     } catch (error) {
       console.log("Error :", error);
     }
@@ -41,14 +45,11 @@ function App() {
     const updatedActivitiesList = activities.filter(
       (activity) => activity.id !== id
     );
-    localStorage.removeItem(activities);
-    localStorage.setItem("activities", JSON.stringify(updatedActivitiesList));
     setActivities(updatedActivitiesList);
   }
 
   useEffect(() => {
     fetchWeather();
-
     const interval = setInterval(() => {
       fetchWeather();
     }, 5000);
@@ -60,12 +61,17 @@ function App() {
 
   return (
     <main
-      className={isGoodWeather ? "layout weather-good" : "layout weather-bad"}
+      className={
+        weatherData.isGoodWeather ? "layout weather-good" : "layout weather-bad"
+      }
     >
-      <Display condition={condition} temperature={temperature} />
+      <Display
+        condition={weatherData.condition}
+        temperature={weatherData.temperature}
+      />
       <List
         activities={filteredActivities}
-        isGoodWeather={isGoodWeather}
+        isGoodWeather={weatherData.isGoodWeather}
         onDeleteActivity={handleDeleteActivity}
       />
       <Form onAddActivity={handleAddActivity} />
